@@ -1,0 +1,116 @@
+transitions:
+  - id: initialize_document
+    from: start
+    to: document_created
+    call:
+      - tool: CreateDocument
+        args:
+          document: InputFile
+          update:
+            content:
+              path: ${ args.path }
+              content: ${ args.content }
+        assign:
+          file: ${ result.data.content }
+
+      - tool: CreateChatMessage
+        args:
+          role: 'assistant'
+          content: |
+            Analysing file...
+
+  - id: analyse
+    from: document_created
+    to: analysis_created
+    call:
+      - tool: CreateChatMessage
+        args:
+          role: 'assistant'
+          content: |
+            Please review suggestions and make changes as desired.
+
+      - id: analysis_prompt
+        tool: AiGenerateDocument
+        args:
+          llm:
+            provider: openai
+            model: gpt-4o
+          responseDocument: FileAnalysisResult
+          prompt: |
+            Analyse the file below and make recommendations for improvements and formatting. Add a short description and example code.
+            Recommendations should be independent from each other so they can be implemented individually without dependency on other recommendations.
+            Recommendations should be specific and for this file only. Do not make any general recommendations that are not specific for this file.
+            Evert recommendation should at least apply to one or more lines of the file.
+            Sort the recommendations from the most important to least important.
+            Wrap the code example in triple backticks.
+            
+            <File Path>
+            {{ file.path }}
+            </File Path>
+            
+            <File Content>
+            ```
+            {{ file.content }}
+            ```
+            </File Content>
+        assign:
+          analysis: ${ result.data.content }
+
+
+  - id: confirm
+    from: analysis_created
+    to: task_created
+    when: manual
+    call:
+      - tool: CreateDocument
+        args:
+          document: FileAnalysisResult
+          update:
+            content: ${ ctx.payload.transition.payload }
+        assign:
+          task: ${ result.data.content }
+
+      - tool: CreateChatMessage
+        args:
+          role: 'assistant'
+          content: |
+            Improving file...
+
+  - id: implement
+    from: task_created
+    to: end
+    call:
+      - id: update_prompt
+        tool: AiGenerateDocument
+        args:
+          llm:
+            provider: openai
+            model: gpt-4o
+          responseDocument: ImprovedFileDocument
+          prompt: |
+            Apply the following improvement recommendations to the file. 
+            Do not make any other changes than what is recommended here.
+            Keep the same file path for the updated file.
+            Add a language identifier to the triple backticks of the code output, if applicable.
+
+            <Recommendations>
+            {{#each task.recommendations}}
+            Description:
+            {{ this.description }}
+            Example:
+            {{ this.example }}
+            
+            {{/each}}
+            </Recommendations>
+
+            <File Path>
+            {{ file.path }}
+            </File Path>
+            
+            <File Content>
+            ```
+            {{ file.content }}
+            ```
+            </File Content>
+        assign:
+          improvedFile: ${ result.data.content }

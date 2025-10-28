@@ -1,0 +1,5 @@
+sequence:
+  - block: AnalyseFileWorkflow
+    args:
+      path: ${ args.path }
+      content: ${ args.content }

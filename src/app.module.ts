@@ -4,8 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { LoopstackApiModule } from '@loopstack/api';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { loopstackConfig } from './loopstack.config';
-import { TestingModule } from './testing-module/testing.module';
-import { ExampleModule } from './example-module/example.module';
+import { SweDemoModule } from './swe-demo-module/swe-demo.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -29,8 +29,10 @@ import { ExampleModule } from './example-module/example.module';
     }),
     LoopCoreModule,
     LoopstackApiModule,
-    TestingModule,
-    ExampleModule,
+    SweDemoModule,
   ],
+  controllers: [
+    AppController,
+  ]
 })
 export class AppModule {}

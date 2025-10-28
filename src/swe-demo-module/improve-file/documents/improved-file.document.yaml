@@ -1,0 +1,14 @@
+ui:
+  order:
+    - path
+    - content
+  properties:
+    path:
+      title: File Path
+      readonly: true
+    content:
+      title: Content
+      widget: code-view
+meta:
+  level: info
+  invalidate: true

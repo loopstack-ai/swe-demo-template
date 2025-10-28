@@ -1,0 +1,15 @@
+ui:
+  order:
+    - path
+    - content
+  properties:
+    path:
+      title: File Path
+      readonly: true
+    content:
+      title: Content
+      readonly: true
+      hidden: true
+meta:
+  level: info
+  invalidate: true

@@ -1,0 +1,24 @@
+ui:
+  properties:
+    recommendations:
+      title: Recommendations
+      items:
+        title: Idea
+        order:
+          - description
+          - example
+        properties:
+          description:
+            title: Description
+            widget: textarea-expand
+          example:
+            title: Example
+            widget: code-view
+  buttons:
+    - transition: confirm
+      label: "Confirm"
+      enabledWhen:
+        - analysis_created
+meta:
+  level: info
+  invalidate: true
