@@ -1,4 +1,4 @@
-import { CreateChatMessage, CreateDocument, Workflow } from '@loopstack/core';
+import { CreateChatMessage, CreateDocument, SwitchTarget, Workflow } from '@loopstack/core';
 import { BlockConfig, Input } from '@loopstack/shared';
 import { z } from 'zod';
 import { Expose } from 'class-transformer';
@@ -15,6 +15,7 @@ import { AiGenerateDocument } from '@loopstack/llm';
     FileAnalysisResult,
     ImprovedFileDocument,
     AiGenerateDocument,
+    SwitchTarget,
   ],
   config: {
     title: 'Analyse File',

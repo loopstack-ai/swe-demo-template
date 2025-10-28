@@ -70,16 +70,26 @@ transitions:
         assign:
           task: ${ result.data.content }
 
+  - id: check
+    from: task_created
+    to:
+      - end
+      - has_recommendations
+    call:
+      - tool: SwitchTarget
+        args:
+          target: |
+            {{#if task.recommendations.length }}has_recommendations{{else}}end{{/if}}
+
+  - id: implement
+    from: has_recommendations
+    to: end
+    call:
       - tool: CreateChatMessage
         args:
           role: 'assistant'
           content: |
-            Improving file...
-
-  - id: implement
-    from: task_created
-    to: end
-    call:
+            Improved file:
       - id: update_prompt
         tool: AiGenerateDocument
         args:

@@ -19,6 +19,3 @@ ui:
       label: "Confirm"
       enabledWhen:
         - analysis_created
-meta:
-  level: info
-  invalidate: true

@@ -4,12 +4,8 @@ ui:
     - content
   properties:
     path:
-      title: File Path
+      title: Path
       readonly: true
     content:
       title: Content
-      readonly: true
       hidden: true
-meta:
-  level: info
-  invalidate: true

@@ -6,7 +6,14 @@ The process can be triggered from within VSCode. Follow the steps below for setu
 
 ## Installation
 ```
-npm install
+npx create-loopstack-app swe-demo --template=swe-demo-template
+```
+
+## Configuration
+
+Add your OpenAI API key to the `.env` file
+```dotenv
+OPENAI_API_KEY=...
 ```
 
 ## Start the Service
@@ -15,11 +22,16 @@ docker compose up -d
 npm run start
 ```
 
+## Connect with Loopstack Studio
+Create a new environment in the loopstack studio: https://app.loopstack.ai
+
+And follow the studio environment setup instructions. 
+
 ## VSCode Setup
 
 Create a `.idea/task.yaml` file in your VSCode project.
 
-The task makes a http request to your local loopstack instance to trigger the automation run. 
+The task makes a http request to your local loopstack instance to trigger a new automation run 
 
 ```json
 {
@@ -50,7 +62,7 @@ The task makes a http request to your local loopstack instance to trigger the au
 1. Open a file in VSCode
 2. Hit `CMD + Shift + P` (OSX)
 3. Select `Task: Run Task`
-4. Then select, `Loopstack: Improve File`.
+4. Then select, `Loopstack: Improve File`
 5. Click on the link in the terminal.
 
  
