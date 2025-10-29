@@ -9,7 +9,7 @@ import { Expose } from 'class-transformer';
       z.object({
         description: z.string(),
         example: z.string(),
-      })
+      }),
     ),
   }),
   configFile: __dirname + '/file-analysis-result.document.yaml',

@@ -23,16 +23,16 @@ export const authConfig = registerAs<AuthConfig>('auth', () => {
     jwt: {
       secret: process.env.JWT_SECRET || 'NO SECRET',
       expiresIn: process.env.JWT_EXPIRES_IN || '1h',
-      refreshSecret: process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET || 'NO SECRET',
+      refreshSecret:
+        process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET || 'NO SECRET',
       refreshExpiresIn: process.env.JWT_REFRESH_EXPIRES_IN || '7d',
     },
     clientId: process.env.CLIENT_ID || '',
     clientSecret: process.env.CLIENT_SECRET || '',
-    authCallback: process.env.AUTH_CALLBACK_URL || 'https://hub.loopstack.ai/api/v1/sso/validate',
+    authCallback:
+      process.env.AUTH_CALLBACK_URL ||
+      'https://hub.loopstack.ai/api/v1/sso/validate',
   };
 });
 
-export const loopstackConfig = [
-  appConfig,
-  authConfig,
-]
+export const loopstackConfig = [appConfig, authConfig];

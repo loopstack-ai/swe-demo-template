@@ -31,8 +31,6 @@ import { AppController } from './app.controller';
     LoopstackApiModule,
     SweDemoModule,
   ],
-  controllers: [
-    AppController,
-  ]
+  controllers: [AppController],
 })
 export class AppModule {}

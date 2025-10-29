@@ -4,11 +4,9 @@ import { z } from 'zod';
 import { AnalyseFileWorkflow } from './workflows/analyse-file.workflow';
 
 @BlockConfig({
-  imports: [
-    AnalyseFileWorkflow
-  ],
+  imports: [AnalyseFileWorkflow],
   config: {
-    title: "Improve File"
+    title: 'Improve File',
   },
   properties: z.object({
     path: z.string(),

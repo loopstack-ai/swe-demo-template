@@ -4,11 +4,9 @@ import { ImproveFileSequence } from './improve-file/improve-file.sequence';
 import { z } from 'zod';
 
 @BlockConfig({
-  imports: [
-    ImproveFileSequence
-  ],
+  imports: [ImproveFileSequence],
   config: {
-    title: 'Software Engineering Demo Workspace'
+    title: 'Software Engineering Demo Workspace',
   },
   properties: z.any(),
 })

@@ -11,11 +11,7 @@ import { FileAnalysisResult } from './improve-file/documents/file-analysis-resul
 import { ImprovedFileDocument } from './improve-file/documents/improved-file.document';
 
 @Module({
-  imports: [
-    LoopCoreModule,
-    CoreToolsModule,
-    LlmModule
-  ],
+  imports: [LoopCoreModule, CoreToolsModule, LlmModule],
   providers: [
     SweDemoWorkspace,
     SweDemoModuleFactoryService,
@@ -26,10 +22,7 @@ import { ImprovedFileDocument } from './improve-file/documents/improved-file.doc
     FileAnalysisResult,
     ImprovedFileDocument,
   ],
-  exports: [
-    SweDemoModuleFactoryService
-  ]
+  exports: [SweDemoModuleFactoryService],
 })
 @ModuleFactory(SweDemoModuleFactoryService)
 export class SweDemoModule {}
-

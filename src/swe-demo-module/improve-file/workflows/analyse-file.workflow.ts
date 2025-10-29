@@ -1,4 +1,9 @@
-import { CreateChatMessage, CreateDocument, SwitchTarget, Workflow } from '@loopstack/core';
+import {
+  CreateChatMessage,
+  CreateDocument,
+  SwitchTarget,
+  Workflow,
+} from '@loopstack/core';
 import { BlockConfig, Input } from '@loopstack/shared';
 import { z } from 'zod';
 import { Expose } from 'class-transformer';
@@ -26,14 +31,10 @@ import { AiGenerateDocument } from '@loopstack/llm';
   }),
   configFile: __dirname + '/analyse-file.workflow.yaml',
 })
-export class AnalyseFileWorkflow extends Workflow  {
+export class AnalyseFileWorkflow extends Workflow {
   @Input()
   @Expose()
   file: InputFile;
-
-  @Input()
-  @Expose()
-  improvedFile: ImprovedFileDocument;
 
   @Input()
   @Expose()
@@ -42,4 +43,8 @@ export class AnalyseFileWorkflow extends Workflow  {
   @Input()
   @Expose()
   task: FileAnalysisResult;
+
+  @Input()
+  @Expose()
+  improvedFile: ImprovedFileDocument;
 }
