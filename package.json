@@ -1,5 +1,5 @@
 {
-  "name": "swe-demo",
+  "name": "@loopstack/swe-demo-template",
   "version": "0.11.2",
   "private": true,
   "scripts": {
