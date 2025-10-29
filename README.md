@@ -29,7 +29,7 @@ And follow the studio environment setup instructions.
 
 ## VSCode Setup
 
-Create a `.idea/task.yaml` file in your VSCode project.
+Create a `.vscode/task.json` file in your project and restart VSCode.
 
 The task makes a http request to your local loopstack instance to trigger a new automation run 
 
