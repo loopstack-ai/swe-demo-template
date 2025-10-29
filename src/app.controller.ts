@@ -28,6 +28,6 @@ export class AppController {
     );
 
     const deepLink = `studio/c/${result.workerId}/p/${result.pipelineId}`;
-    return `Process file here: \n > http://localhost:5173/${deepLink}`;
+    return `Process file here: \n > https://app.loopstack.ai/${deepLink}`;
   }
 }
