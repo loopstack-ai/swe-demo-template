@@ -17,5 +17,3 @@ ui:
   buttons:
     - transition: confirm
       label: "Confirm"
-      enabledWhen:
-        - analysis_created

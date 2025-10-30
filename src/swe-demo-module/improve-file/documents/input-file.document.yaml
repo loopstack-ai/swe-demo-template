@@ -8,4 +8,4 @@ ui:
       readonly: true
     content:
       title: Content
-      hidden: true
+      widget: code-view
