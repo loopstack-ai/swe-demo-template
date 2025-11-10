@@ -33,8 +33,6 @@ export class AppController {
       throw new UnauthorizedException('No user found.')
     }
 
-    console.log('improve', user.id)
-
     const result = await this.runService.run(
       ImproveFileSequence.name,
       SweDemoWorkspace.name,
