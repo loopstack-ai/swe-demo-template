@@ -1,11 +1,12 @@
 ui:
-  order:
-    - path
-    - content
-  properties:
-    path:
-      title: Path
-      readonly: true
-    content:
-      title: Content
-      widget: code-view
+  form:
+    order:
+      - path
+      - content
+    properties:
+      path:
+        title: Path
+        readonly: true
+      content:
+        title: Content
+        widget: code-view

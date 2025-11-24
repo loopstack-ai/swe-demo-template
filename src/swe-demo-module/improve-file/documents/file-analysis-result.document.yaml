@@ -1,19 +1,23 @@
 ui:
-  properties:
-    recommendations:
-      title: Recommendations
-      items:
-        title: Idea
-        order:
-          - description
-          - example
-        properties:
-          description:
-            title: Description
-            widget: textarea-expand
-          example:
-            title: Example
-            widget: code-view
-  buttons:
-    - transition: confirm
-      label: "Confirm"
+  form:
+    properties:
+      recommendations:
+        title: Recommendations
+        items:
+          title: Idea
+          order:
+            - description
+            - example
+          properties:
+            description:
+              title: Description
+              widget: textarea-expand
+            example:
+              title: Example
+              widget: code-view
+  actions:
+    - type: button
+      widget: button
+      transition: confirm
+      options:
+        label: "Confirm"
